@@ -75,7 +75,7 @@ Folder/
 | file                   | description                                       |
 | ---------------------- | ------------------------------------------------- |
 | default_toast_logo.png | Default logo used for Windows toast notifications |
-| coffee.png             | Logo used by example 2                            |
+| coffee.png             | Logo used in example 2                            |
 | trayicon.ico           | Icon used for the application executable          |
 | config.json            | MQTT server configuration                         |
 | win_mqtt_notify.exe    | The application executable                        | 
