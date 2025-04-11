@@ -64,17 +64,21 @@ Add username and password if required.
 ```
 Folder/
     ├── images/
+    |   ├── coffee.png
     |   ├── default_toast_logo.png
+    |   ├── trayicon.ico
     │   └── **place your logos here**
     ├── config/
     │   └── config.json
     └── win_mqtt_notify.exe
 ```
-| file                   | description                                      |
-| ---------------------- | ------------------------------------------------ |
-| default_toast_logo.png | Default logo used by Windows Toast Notification  |
-| config.json            | MQTT servers configurations                      |
-| win_mqtt_notify.exe    | the application                                  | 
+| file                   | description                                       |
+| ---------------------- | ------------------------------------------------- |
+| default_toast_logo.png | Default logo used for Windows toast notifications |
+| coffee.png             | Logo used by example 2                            |
+| trayicon.ico           | Icon used for the application executable          |
+| config.json            | MQTT server configuration                         |
+| win_mqtt_notify.exe    | The application executable                        | 
 
 
 ## Windows Startup
