@@ -1,0 +1,31 @@
+# Rust specific
+/target/
+**/*.rs.bk
+
+# IntelliJ related
+.idea/
+/*.iml
+
+# VS Code related
+.vscode/
+
+# Backup and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# Dependency artifacts
+Cargo.lock
+
+# If you’re publishing a library, consider ignoring Cargo.lock
+# But for applications, keep it in version control
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+*.code-workspace

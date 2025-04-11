@@ -1,0 +1,8 @@
+{
+    "mqtt_server": "192.168.15.101",
+    "mqtt_port": 1883,
+    "mqtt_username": null,
+    "mqtt_password" : null,
+    "mqtt_topic": "hello/world",
+    "cleaning_cycle": 3600
+}
