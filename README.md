@@ -6,35 +6,34 @@ A simple Rust application that connects to an MQTT broker and listens to a topic
 
 A tray application is initiated on a Windows machine. The app connects to an MQTT server and listens for messages following a specific JSON format. When a message matching the format is received, it creates a Windows Toast notification.
 
-![alt text](screenshot_toast.png "Toast Screenshot")
-
 ## Json Format
-JSON message format:
+Example 1:
 ```
 {
   "title": "Your Toast Title",
   "body_message": "Your message go here",
-  "logo": null,
-  "message_id": "some_UID"
+  "message_id": "id123"
 }
 ```
+![Screenshot](screenshot_toast.png "Toast with default logo")
+
+Example 2:
+```
+{
+  "title":"Coffee Break",
+  "body_message":"Time to relax and have a coffee.",
+  "message_id":"id1234",
+  "logo":"coffee.png"
+}
+```
+![Screenshot](screenshot_toast2.png "Result Toast Notification using coffee.png")
 
 | **Field**      | **Type** | **Description**                                                                                                                                     |
 | -------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `title`        | `String` | The title text displayed in the toast notification.                                                                                                 |
 | `body_message` | `String` | The main content or message body of the toast notification.                                                                                         |
-| `logo`         | `String` | _(Optional)_ The filename of a logo image located in the `images/` directory.  <br>If not provided or empty, `default_toast_logo.png` will be used. |
 | `message_id`   | `String` | A unique identifier used to prevent displaying duplicate notifications.                                                                             | 
-
-Example:
-```
-{
-  "title":"Coffee Break",
-  "body_message":"Time to relax and have a coffee.",
-  "logo":"coffee.png",
-  "message_id":"id202501301500"
-}
-```
+| `logo`         | `String` | _(Optional)_ The filename of a logo image located in the `images/` directory.  <br>If not provided or empty, `default_toast_logo.png` will be used. |
 
 ## config.json
 Add username and password if required.
@@ -65,7 +64,7 @@ Add username and password if required.
 ```
 Folder/
     ├── images/
-    |   ├── notificationlogo.png
+    |   ├── default_toast_logo.png
     │   └── **place your logos here**
     ├── config/
     │   └── config.json
@@ -80,7 +79,7 @@ Folder/
 
 ## Windows Startup
 
-Add the app to Windows startup so the server is loaded automatically on start.
+Add the app to Windows startup so the server loads automatically at startup.
 
 ```
 %AppData%\Microsoft\Windows\Start Menu\Programs\Startup
