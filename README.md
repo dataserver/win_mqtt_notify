@@ -6,6 +6,10 @@ A simple Rust application that connects to an MQTT broker and listens to a topic
 
 A tray application is initiated on a Windows machine. The app connects to an MQTT server and listens for messages following a specific JSON format. When a message matching the format is received, it creates a Windows Toast notification.
 
+Plain Text Support
+
+The application also supports receiving plain text messages. If a message is received as plain text (i.e., the payload is not in the expected JSON format), the app will display the raw text as the body of the toast notification. No Title and no logo will be shown.
+
 ## Json Format
 Example 1:
 ```
@@ -36,7 +40,7 @@ Example 2:
 | `logo`         | `String` | _(Optional)_ The filename of a logo image located in the `images/` directory.  <br>If not provided or empty, `default_toast_logo.png` will be used. |
 
 ## Plain Text
-You can send plain text to the MQTT broker and it will be displayed.
+You can send plain text directly to the MQTT broker. The message will be displayed as a Windows toast notification with no title, using the app's default logo `default_toast_logo.png` , and with the plain text as the body.
 
 Example:
 
