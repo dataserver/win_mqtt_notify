@@ -15,7 +15,7 @@ Example 1:
   "message_id": "id123"
 }
 ```
-![Screenshot](screenshot_toast.png "Toast with default logo")
+![Screenshot](screenshot_toast.png)
 
 Example 2:
 ```
@@ -26,7 +26,7 @@ Example 2:
   "logo":"coffee.png"
 }
 ```
-![Screenshot](screenshot_toast2.png "Result Toast Notification using coffee.png")
+![Screenshot](screenshot_toast2.png)
 
 | **Field**      | **Type** | **Description**                                                                                                                                     |
 | -------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,6 +34,14 @@ Example 2:
 | `body_message` | `String` | The main content or message body of the toast notification.                                                                                         |
 | `message_id`   | `String` | A unique identifier used to prevent displaying duplicate notifications.                                                                             | 
 | `logo`         | `String` | _(Optional)_ The filename of a logo image located in the `images/` directory.  <br>If not provided or empty, `default_toast_logo.png` will be used. |
+
+## Plain Text
+You can send plain text to the MQTT broker and it will be displayed.
+
+Example:
+
+![Screenshot](screenshot_toast3.png)
+
 
 ## config.json
 Add username and password if required.

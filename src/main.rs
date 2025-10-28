@@ -12,6 +12,8 @@ use serde_json;
 use std::sync::{Mutex, Arc};
 use std::collections::HashSet;
 use std::time::{Instant, Duration};
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
 
 #[derive(Deserialize)]
 struct Config {
@@ -139,7 +141,27 @@ fn start_mqtt_client(config: Config) {
                                         show_toast_notification(title, body_message, logo_path);
                                     },
                                     Err(e) => {
+                                        // Deserialization failed, handle it by hashing the payload and using default values
                                         println!("Failed to deserialize notification data: {}. Error: {:?}", payload_str, e);
+
+                                        // Use a hash of the payload as the message_id
+                                        let message_id = hash_payload(&payload_str);
+
+                                        // Default values when deserialization fails
+                                        let title = "".to_string();
+                                        let body_message = payload_str; // The body message will be the raw payload string
+                                        let logo_path: Option<String> = None;
+
+                                        // Check if the message ID has been seen before
+                                        let mut seen_messages_lock = seen_messages.lock().unwrap();
+                                        if seen_messages_lock.contains(&message_id) {
+                                            println!("Duplicate message received, ignoring (message_id: {}).", message_id);
+                                            continue;
+                                        }
+                                        seen_messages_lock.insert(message_id);
+
+                                        // Show the toast notification with default title and the raw body message
+                                        show_toast_notification(title, body_message, logo_path);
                                     },
                                 }
                             }
@@ -186,6 +208,11 @@ fn show_toast_notification(title: String, body_message: String, logo: Option<Str
         .expect("Failed to show toast notification");
 }
 
+fn hash_payload(payload: &str) -> String {
+    let mut hasher = DefaultHasher::new();
+    payload.hash(&mut hasher);
+    format!("{:x}", hasher.finish()) // Return the hash as a hexadecimal string
+}
 
 
 fn main() {
